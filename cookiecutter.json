@@ -1,0 +1,11 @@
+{
+    "directory_name": "sample",
+    "project_name": "sample",
+    "project_slug": "sample",
+    "author_name": "Matthew Wimberly",
+    "author_email": "matthew.wimb@gmail.com",
+    "description": "A sample project build.",
+    "github_username": "mattdood",
+    "repository_name": "sample",
+    "min_python_version": "3.6"
+}

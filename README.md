@@ -20,6 +20,44 @@ cd <your parent folder location>
 cookecutter https://github.com/mattdood/pypi-cookiecutter.git
 ```
 
+## Initial setup
+The following GitHub secrets will need to be added in order to release the PyPI
+packages without the CI failing:
+* `TEST_PYPI_API_TOKEN`
+* `PYPI_API_TOKEN`
+
+These can be generated using the following links:
+* [PyPI](https://pypi.org/manage/account/token/)
+* [Test PyPI](https://test.pypi.org/manage/account/token/)
+
+## Releasing builds
+To release builds for the project we use a combination of tagging and changes to
+`setup.py`.
+
+For any releases to [test.pypi.org](https://test.pypi.org) use a change to the
+`version="..."` inside of `setup.py`. Once a PR is merged into the main project
+the test release will be updated.
+
+Any prod releases to [pypi.org](https://pypi.org) require a tagged version number.
+This should be done locally by running the following:
+
+```bash
+git checkout master
+git pull master
+git tag v<version-number-here>
+git push origin v<version-number-here>
+```
+
+### Rollbacks of versions
+To roll a version back we need to delete the tagged release from the prod PyPI,
+then delete the GitHub tag.
+
+```
+git tag -d v<version-number-here>
+git push origin :v<version-number-here>
+```
+
+
 ## Generated content
 * GitHub CI for PyPI releases, tests, and linting
     * **Note:** The project requires GitHub secrets to be added for PyPI access.

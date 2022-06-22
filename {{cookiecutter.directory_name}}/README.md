@@ -18,15 +18,17 @@
 [![Pytest](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repository_name}}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repository_name}}/actions/workflows/ci.yml)
 [![PyPI version](https://badge.fury.io/py/{{cookiecutter.project_slug}}.svg)](https://badge.fury.io/py/{{cookiecutter.project_slug}})
 
-## Initial setup
-The following GitHub secrets will need to be added in order to release the PyPI
-packages without the CI failing:
-* `TEST_PYPI_API_TOKEN`
-* `PYPI_API_TOKEN`
+## Installation
+To install {{cookiecutter.project_name}} run the following:
+```
+pip install {{cookiecutter.project_slug}}
+```
 
-These can be generated using the following links:
-* [PyPI](https://pypi.org/manage/account/token/)
-* [Test PyPI](https://test.pypi.org/manage/account/token/)
+## Features
+*
+
+## Usage
+
 
 ## Running tests
 [Pytest](https://pytest.org) is used as the test runner. To install and run tests
@@ -55,32 +57,5 @@ To run Pre-Commit, use the following:
 
 ```bash
 pre-commit run --all-files
-```
-
-## Releasing builds
-To release builds for the project we use a combination of tagging and changes to
-`setup.py`.
-
-For any releases to [test.pypi.org](https://test.pypi.org) use a change to the
-`version="..."` inside of `setup.py`. Once a PR is merged into the main project
-the test release will be updated.
-
-Any prod releases to [pypi.org](https://pypi.org) require a tagged version number.
-This should be done locally by running the following:
-
-```bash
-git checkout master
-git pull master
-git tag v<version-number-here>
-git push origin v<version-number-here>
-```
-
-### Rollbacks of versions
-To roll a version back we need to delete the tagged release from the prod PyPI,
-then delete the GitHub tag.
-
-```
-git tag -d v<version-number-here>
-git push origin :v<version-number-here>
 ```
 

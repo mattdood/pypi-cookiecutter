@@ -20,8 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "{{cookiecutter.project_name}}"},
-    packages=setuptools.find_packages(where="{{cookiecutter.project_name}}"),
+    packages=setuptools.find_packages(include=["{{cookiecutter.project_name}}", "{{cookiecutter.project_name}}.*"]),
     package_data={},
     python_requires=">={{cookiecutter.min_python_version}}",
 )
